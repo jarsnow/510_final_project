@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{amsmath}
+\usepackage{array}
+\usetikzlibrary{automata, positioning, arrows}
+\tikzset{
+->, % makes the edges directed
+>=stealth, % makes the arrow heads bold
+node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+initial text=$ $, % sets the text that appears on the start arrow
+}
+
+\geometry{
+    a4paper,
+    total={7in, 8in},
+    top=1in, 
+    bottom=1in,
+}
+\usepackage{titling}
+\setlength{\droptitle}{-2em}  
+
+\title{EECS 510 Final Project}
+\author{Andrew Huang and John Rader}
+\date{May 2025}
+\begin{document}
+
+\maketitle
+
+\newlist{mylist}{enumerate}{1}
+\setlist[mylist, 1]
+{label=\arabic{mylisti}., %1., 2., 3., ...
+leftmargin=\parindent,
+rightmargin=10pt
+}
+
+\begin{mylist}
+
+\item General Description
+
+blah blah blah \\
+testing doing this locally i guess if it compiles, it compiles
+
+\item Grammar for the Language
+
+Placeholder Grammar:
+\begin{align*}
+&S \rightarrow aSb \, | \, X \\
+&X \rightarrow cXd \, | \, cYd \\
+&Y \rightarrow aYb \, | \, ab 
+\end{align*}
+
+\item Automaton
+
+\begin{center}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \node[state, initial](q0){$q_0$};
+        \node[state, accepting, right of=q0](q1){$q_1$};
+        \draw 
+        (q0) edge[above] node{$\lambda,\lambda \rightarrow S$} (q1)
+        (q1) edge[right, loop right] node[align=center]
+        {$\lambda, S \rightarrow aAS$ \\ 
+        $\lambda, S \rightarrow a$ \\
+        $\lambda, A \rightarrow SbA$ \\
+        $\lambda, A \rightarrow SS$ \\
+        $\lambda, A \rightarrow ba$ \\
+        $a, a \rightarrow \lambda$ \\ 
+        $b, b \rightarrow \lambda$} (q1);
+    \end{tikzpicture}
+    \caption{Automaton for language}
+    \label{fig1:automaton-for-language}
+\end{figure}
+
+\end{center}
+
+\newpage
+\item Data Structure
+
+\item Testing
+
+\end{mylist}
+
+\end{document}
+
