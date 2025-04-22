@@ -54,9 +54,22 @@ S is the initial variable for the beginning of a combo
 %we should use a symbol to denote "hold button". I will use \mu for now
 \begin{align*}
 &S \rightarrow (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, A \, | \, \bar{(L_2)} \, | \, (L+Y)\\
+%basic side smash/overhead 1 --> overhead 2 --> overhead 3
 &Y_1 \rightarrow (Y_2) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, (Y+B) \\
 &Y_2 \rightarrow (Y_3) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, (Y+B) \\
 &Y_3 \rightarrow (B_1) \, | \, \bar{(R_1)}  \, | \, (Y+B) \, | \, (\bar{R_1}+Y+B) \\
+%big bang
+&B_1 \rightarrow (B_2) \, | \, \bar{(R_1)} \\ 
+&B_2 \rightarrow (B_3) \, | \, \bar{(R_1)} \\ 
+&B_3 \rightarrow (B_4) \, | \, \bar{(R_1)} \\ 
+&B_4 \rightarrow (B_5) \, | \, (\bar{R_1}+Y+B) \, | \, \bar{(R_1)} \\ 
+&B_5 \rightarrow (B_5) \, | \, (\bar{R_1}+Y+B) \, | \, \bar{(R_1)} ????\\ 
+%mighty charge (release is omitted)
+&(\bar{R_1}+Y+B) \rightarrow (Y+B) \, | \, (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \\
+%focus mode
+&\bar{(L_2)} \rightarrow (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, A \, | \, R_2 \\
+%focus strike/charge
+&\bar{(R_1)} \rightarrow (\bar{R_1}+Y+B) \\ 
 \end{align*}
 
 \item Automaton
