@@ -53,17 +53,17 @@ Placeholder Grammar:
 S is the initial variable for the beginning of a combo
 %we should use a symbol to denote "hold button". I will use \mu for now
 \begin{align*}
-&S \rightarrow (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, A \, | \, \bar{(L_2)} \, | \, (L+Y)\\
+&S \rightarrow y(Y_1) \, | \, b(B_1) \, | \, r_1\bar{(R_1)} \, | \, aA \, | \, l_2\bar{(L_2)} \, | \, (ly)(L+Y)\\
 %basic side smash/overhead 1 --> overhead 2 --> overhead 3
-&Y_1 \rightarrow (Y_2) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, (Y+B) \\
-&Y_2 \rightarrow (Y_3) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, (Y+B) \\
-&Y_3 \rightarrow (B_1) \, | \, \bar{(R_1)}  \, | \, (Y+B) \, | \, (\bar{R_1}+Y+B) \\
+&Y_1 \rightarrow y(Y_2) \, | \, b(B_1) \, | \, r_1\bar{(R_1)} \, | \, (yb)(Y+B) \\
+&Y_2 \rightarrow y(Y_3) \, | \, b(B_1) \, | \, r_1\bar{(R_1)} \, | \, (yb)(Y+B) \\
+&Y_3 \rightarrow b(B_1) \, | \, r_1\bar{(R_1)}  \, | \, (yb)(Y+B) \, | \, (r_1yb)(\bar{R_1}+Y+B) \\
 %big bang
-&B_1 \rightarrow (B_2) \, | \, \bar{(R_1)} \\ 
-&B_2 \rightarrow (B_3) \, | \, \bar{(R_1)} \\ 
-&B_3 \rightarrow (B_4) \, | \, \bar{(R_1)} \\ 
-&B_4 \rightarrow (B_5) \, | \, (\bar{R_1}+Y+B) \, | \, \bar{(R_1)} \\ 
-&B_5 \rightarrow (B_5) \, | \, (\bar{R_1}+Y+B) \, | \, \bar{(R_1)} ????\\ 
+&B_1 \rightarrow b(B_2) \, | \, r_1\bar{(R_1)} \\ 
+&B_2 \rightarrow b(B_3) \, | \, r_1\bar{(R_1)} \\ 
+&B_3 \rightarrow b(B_4) \, | \, r_1\bar{(R_1)} \\ 
+&B_4 \rightarrow b(B_5) \, | \, (r_1yb)(\bar{R_1}+Y+B) \, | \, r_1\bar{(R_1)} \\ 
+&B_5 \rightarrow b(B_5) \, | \, (r_1yb)(\bar{R_1}+Y+B) \, | \, r_1\bar{(R_1)} ????\\ 
 %mighty charge (release is omitted)
 &(\bar{R_1}+Y+B) \rightarrow (Y+B) \, | \, (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \\
 %focus mode
