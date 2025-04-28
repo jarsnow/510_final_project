@@ -49,27 +49,69 @@ testing again
 
 \item Grammar for the Language
 
-Placeholder Grammar:
+Move Name for each State (Paired together for general buttons/functionality): \\
+\begin{table}[h] 
+  \begin{tabular}{l | l}
+    State & Name  \\
+    \hline
+    $S$ & Neutral State \\
+    $q_{ss}$ & Side Smash \\
+    $q_{os1}$ & Overhead Smash I \\
+    $q_{os2}$ & Overhead Smash II \\
+    $q_{u}$ & Upswing \\
+    $q_{bb1}$ & Big Bang I \\
+    $q_{bb2}$ & Big Bang II \\
+    $q_{bb3}$ & Big Bang III \\
+    $q_{bb4}$ & Big Bang IV \\
+    $q_{bbf}$ & Big Bang Finisher\\
+    $q_{sb1}$ & Big Bang Finisher\\
+    $q_{sb2}$ & Big Bang Finisher\\
+    $q_{sb3}$ & Big Bang Finisher\\
+    $q_{c1}$ & Charge \\
+    $q_{c2}$ & Charge \\
+    $q_{c3}$ & Charge \\
+    $q_{csb}$ & Charge \\
+    $q_{cu}$ & Charge \\
+    $q_{cbb}$ & Charge \\
+    $q_{cfu}$ & Charge \\
+    $q_{mc1}$ & Mighty Charge \\
+    $q_{mc2}$ & Mighty Charge \\
+    $q_{mcu}$ & Mighty Charge \\
+    $q_{mcs}$ & Mighty Charge \\
+  \end{tabular}
+\end{table}
 S is the initial variable for the beginning of a combo
 %we should use a symbol to denote "hold button". I will use \mu for now
 \begin{align*}
-&S \rightarrow y(Y_1) \, | \, b(B_1) \, | \, r_1\bar{(R_1)} \, | \, aA \, | \, l_2\bar{(L_2)} \, | \, (ly)(L+Y)\\
+&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, l_2 \, | \, (ly)(L+Y) \, | \, \lambda \\
 %basic side smash/overhead 1 --> overhead 2 --> overhead 3
-&Y_1 \rightarrow y(Y_2) \, | \, b(B_1) \, | \, r_1\bar{(R_1)} \, | \, (yb)(Y+B) \\
-&Y_2 \rightarrow y(Y_3) \, | \, b(B_1) \, | \, r_1\bar{(R_1)} \, | \, (yb)(Y+B) \\
-&Y_3 \rightarrow b(B_1) \, | \, r_1\bar{(R_1)}  \, | \, (yb)(Y+B) \, | \, (r_1yb)(\bar{R_1}+Y+B) \\
+&q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
+&q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
+&q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
+&q_{u} \rightarrow b{q_bb1} \, | \, r_2q_{c1} \, | \,(yb)q_{sb1} \, | \, (r_2yb)q_{mc1} \, | \, tS\\
 %big bang
-&B_1 \rightarrow b(B_2) \, | \, r_1\bar{(R_1)} \\ 
-&B_2 \rightarrow b(B_3) \, | \, r_1\bar{(R_1)} \\ 
-&B_3 \rightarrow b(B_4) \, | \, r_1\bar{(R_1)} \\ 
-&B_4 \rightarrow b(B_5) \, | \, (r_1yb)(\bar{R_1}+Y+B) \, | \, r_1\bar{(R_1)} \\ 
-&B_5 \rightarrow b(B_5) \, | \, (r_1yb)(\bar{R_1}+Y+B) \, | \, r_1\bar{(R_1)} ????\\ 
+&q_{bb1} \rightarrow bq_{bb2} \, | \, r_2q_{c1} \, | \, tS \\ 
+&q_{bb2} \rightarrow bq_{bb3} \, | \, r_2q_{c1} \, | \, tS \\ 
+&q_{bb3} \rightarrow bq_{bb4} \, | \, r_2q_{c1} \, | \, tS \\ 
+&q_{bb4} \rightarrow bq_{bbf} \, | \, (r_2yb)q_{mc1} \, | \, r_2q_{c1} \, | \, tS \\ 
+&q_{bbf} \rightarrow r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS \\ 
+%sb 
+&q_{sb1} \rightarrow tq_{sb2} \, | \, yS? \\ 
+&q_{sb2} \rightarrow tq_{sb3} \, | \, yS? \\ 
+&q_{sb3} \rightarrow tS? \, | \, yS? \\ 
+%charge
+&q_{c1} \rightarrow tq_{c2} \, | \,  r_2q_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, (l_2r_1)q_{fbe}\\ 
+&q_{c2} \rightarrow tq_{c3} \, | \,  r_2q_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, (l_2r_1)q_{fbe}\\ 
+&q_{c3} \rightarrow r_2q_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, (yb)q_{sb1} \, | \, (l_2r_1)q_{fbe}\\ 
 %mighty charge (release is omitted)
-&(\bar{R_1}+Y+B) \rightarrow (Y+B) \, | \, (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \\
+&(\bar{R_2}+Y+B) \rightarrow (yb)(Y+B) \, | \, y(Y_1) \, | \, b(B_1) \, | \, r_2\bar{(R_2)} \\
 %focus mode
-&\bar{(L_2)} \rightarrow (Y_1) \, | \, (B_1) \, | \, \bar{(R_1)} \, | \, A \, | \, R_2 \\
-%focus strike/charge
-&\bar{(R_1)} \rightarrow (\bar{R_1}+Y+B) \\ 
+&\bar{(L_2)} \rightarrow y(Y_1) \, | \, b(B_1) \, | \, r_2\bar{(R_2)} \, | \, aA \, | \, r_1R_1 \\
+%focus strike/charge. when not hitting a wound, shows B | R_2
+&\bar{(R_1)} \rightarrow (\bar{R_2}+Y+B) \, | \, bB \, | \, r_2\bar{(R_2)} \\
+%charge attack. After 3 time time units, can use y/b to go to mighty charge. Different time units results in seperate combos that can be used. 
+&\bar{(R_2)} \rightarrow (\bar{R_2}+Y+B) \, | \, y \, | \, b \, | \, (l_1r_1)\bar{(R_1)} \\ 
+&\bar{(R_2)} \rightarrow (\bar{R_2}+Y+B) \, | \, y \, | \, b \, | \, (l_1r_1)\bar{(R_1)} \\
 \end{align*}
 
 \item Automaton
