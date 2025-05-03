@@ -64,26 +64,29 @@ Move Name for each State (Paired together for general buttons/functionality): \\
     $q_{bb3}$ & Big Bang III \\
     $q_{bb4}$ & Big Bang IV \\
     $q_{bbf}$ & Big Bang Finisher\\
-    $q_{sb1}$ & Big Bang Finisher\\
-    $q_{sb2}$ & Big Bang Finisher\\
-    $q_{sb3}$ & Big Bang Finisher\\
-    $q_{c1}$ & Charge \\
-    $q_{c2}$ & Charge \\
-    $q_{c3}$ & Charge \\
-    $q_{csb}$ & Charge \\
-    $q_{cu}$ & Charge \\
-    $q_{cbb}$ & Charge \\
-    $q_{cfu}$ & Charge \\
-    $q_{mc1}$ & Mighty Charge \\
-    $q_{mc2}$ & Mighty Charge \\
-    $q_{mcu}$ & Mighty Charge \\
-    $q_{mcs}$ & Mighty Charge \\
+    $q_{sb1}$ & Spinning Bludgeon (Time 0)\\
+    $q_{sb2}$ & Spinning Bludgeon (Time 1)\\
+    $q_{sb3}$ & Spinning Bludgeon (Time 2)\\
+    $q_{c1}$ & Charge (Time 0)\\
+    $q_{c2}$ & Charge (Time 1)\\
+    $q_{c3}$ & Charge (Time 2)\\
+    $q_{csb}$ & Charged Side Blow\\
+    $q_{cu}$ & Charged Upswing\\
+    $q_{cbb}$ & Charged Big Bang\\
+    $q_{cfu}$ & Charged Follow-up\\
+    $q_{mc1}$ & Mighty Charge (Time 0)\\
+    $q_{mc2}$ & Mighty Charge (Time 1)\\
+    $q_{mcu}$ & Mighty Charge Upswing\\
+    $q_{mcs}$ & Mighty Charge Slam\\
+    $q_{fben}$ & Focus Blow: Earthquake (No Wound)\\
+    $q_{fbew1}$ & Focus Blow: Earthquake (Wound Option 1)\\
+    $q_{fbew2}$ & Focus Blow: Earthquake (Wound Option 2)\\
   \end{tabular}
 \end{table}
 S is the initial variable for the beginning of a combo
 %we should use a symbol to denote "hold button". I will use \mu for now
 \begin{align*}
-&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, l_2 \, | \, (ly)(L+Y) \, | \, \lambda \\
+&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, l_2q_{fm} \, | \, (ly)q_{ss} \, | \, \lambda \\
 %basic side smash/overhead 1 --> overhead 2 --> overhead 3
 &q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
 &q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
@@ -100,18 +103,24 @@ S is the initial variable for the beginning of a combo
 &q_{sb2} \rightarrow tq_{sb3} \, | \, yS? \\ 
 &q_{sb3} \rightarrow tS? \, | \, yS? \\ 
 %charge
-&q_{c1} \rightarrow tq_{c2} \, | \,  r_2q_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, (l_2r_1)q_{fbe}\\ 
-&q_{c2} \rightarrow tq_{c3} \, | \,  r_2q_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, (l_2r_1)q_{fbe}\\ 
-&q_{c3} \rightarrow r_2q_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, (yb)q_{sb1} \, | \, (l_2r_1)q_{fbe}\\ 
+&q_{c1} \rightarrow tq_{c2} \, | \,  r_2q_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
+&q_{c2} \rightarrow tq_{c3} \, | \,  r_2q_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
+&q_{c3} \rightarrow r_2q_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, (yb)q_{sb1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\ \\ 
+&q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, r_2q_{c1} \, | \, tS \\ 
+&q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS \\ 
+&q_{cbb} \rightarrow r_2q_{c1} \, | \,  (yb)q_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, (ly)q_{ss} \, | \, tS \\ 
+&q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, r_2q_{c1} | \, (yb)q_{sb1} \, | \, tS\\ 
 %mighty charge (release is omitted)
-&(\bar{R_2}+Y+B) \rightarrow (yb)(Y+B) \, | \, y(Y_1) \, | \, b(B_1) \, | \, r_2\bar{(R_2)} \\
+&q_{mc1} \rightarrow tq_{mc2} \, | \, l_2q_{mcu} \, | \, yq_{mcu}\\
+&q_{mc2} \rightarrow l_2q_{mcs} \, | \, yq_{mcs}\\
+&q_{mcu} \rightarrow yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1} \, | \, (yb)q_{sb1} \, | \,tS\\
+&q_{mcs} \rightarrow (yb)q_{sb1} \, | \, yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1}\, | \,tS\\
 %focus mode
-&\bar{(L_2)} \rightarrow y(Y_1) \, | \, b(B_1) \, | \, r_2\bar{(R_2)} \, | \, aA \, | \, r_1R_1 \\
+&q_{fm} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, r_1q_{fben} \, | \, r_1q_{fbew1} \, | \, (ly)q_{ss}\\
 %focus strike/charge. when not hitting a wound, shows B | R_2
-&\bar{(R_1)} \rightarrow (\bar{R_2}+Y+B) \, | \, bB \, | \, r_2\bar{(R_2)} \\
-%charge attack. After 3 time time units, can use y/b to go to mighty charge. Different time units results in seperate combos that can be used. 
-&\bar{(R_2)} \rightarrow (\bar{R_2}+Y+B) \, | \, y \, | \, b \, | \, (l_1r_1)\bar{(R_1)} \\ 
-&\bar{(R_2)} \rightarrow (\bar{R_2}+Y+B) \, | \, y \, | \, b \, | \, (l_1r_1)\bar{(R_1)} \\
+&q_{fben} \rightarrow bq_{bb1} \, | \, r_2q_{c1} \, | \, tS\\
+&q_{fbew1} \rightarrow r_2q_{c1} \, | \, tq_{fbew2} \\
+&q_{fbew2} \rightarrow r_2q_{c1} \, | \, yq_{os2} \, | \, tS\\
 \end{align*}
 
 \item Automaton
