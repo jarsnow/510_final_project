@@ -86,12 +86,12 @@ Move Name for each State (Paired together for general buttons/functionality): \\
 S is the initial variable for the beginning of a combo
 %we should use a symbol to denote "hold button". I will use \mu for now
 \begin{align*}
-&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, l_2r_1q_{fben} \, | \, l_2r_1q_{fbew1} \, | \, (ly)q_{ss} \, | \, \lambda \\
+&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1} \, | \, (ly)q_{ss} \, | \, \lambda \\
 %basic side smash/overhead 1 --> overhead 2 --> overhead 3
-&q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
-&q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
-&q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
-&q_{u} \rightarrow b{q_bb1} \, | \, r_2q_{c1} \, | \,(yb)q_{sb1} \, | \, (r_2yb)q_{mc1} \, | \, tS\\
+&q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S\\
+&q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S\\
+&q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S\\
+&q_{u} \rightarrow b{q_bb1} \, | \, r_2q_{c1} \, | \,(yb)q_{sb1} \, | \, (r_2yb)q_{mc1} \, | \, S\\
 %big bang
 &q_{bb1} \rightarrow bq_{bb2} \, | \, r_2q_{c1} \, | \, S \\ 
 &q_{bb2} \rightarrow bq_{bb3} \, | \, r_2q_{c1} \, | \, S \\ 
@@ -117,7 +117,7 @@ S is the initial variable for the beginning of a combo
 &q_{mcs} \rightarrow (yb)q_{sb1} \, | \, yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1}\, | \, S\\
 %focus strike/charge. when not hitting a wound, shows B | R_2
 &q_{fben} \rightarrow bq_{bb1} \, | \, r_2q_{c1} \, | \, S\\
-&q_{fbew1} \rightarrow r_2q_{c1} \, | \, tq_{fbew2} \\
+&q_{fbew1} \rightarrow r_2q_{c1} \, | \, q_{fbew2} \\
 &q_{fbew2} \rightarrow r_2q_{c1} \, | \, yq_{os2} \, | \, S\\
 \end{align*}
 
