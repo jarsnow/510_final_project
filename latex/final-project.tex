@@ -86,41 +86,39 @@ Move Name for each State (Paired together for general buttons/functionality): \\
 S is the initial variable for the beginning of a combo
 %we should use a symbol to denote "hold button". I will use \mu for now
 \begin{align*}
-&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, l_2q_{fm} \, | \, (ly)q_{ss} \, | \, \lambda \\
+&S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, l_2r_1q_{fben} \, | \, l_2r_1q_{fbew1} \, | \, (ly)q_{ss} \, | \, \lambda \\
 %basic side smash/overhead 1 --> overhead 2 --> overhead 3
 &q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
 &q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
 &q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS\\
 &q_{u} \rightarrow b{q_bb1} \, | \, r_2q_{c1} \, | \,(yb)q_{sb1} \, | \, (r_2yb)q_{mc1} \, | \, tS\\
 %big bang
-&q_{bb1} \rightarrow bq_{bb2} \, | \, r_2q_{c1} \, | \, tS \\ 
-&q_{bb2} \rightarrow bq_{bb3} \, | \, r_2q_{c1} \, | \, tS \\ 
-&q_{bb3} \rightarrow bq_{bb4} \, | \, r_2q_{c1} \, | \, tS \\ 
-&q_{bb4} \rightarrow bq_{bbf} \, | \, (r_2yb)q_{mc1} \, | \, r_2q_{c1} \, | \, tS \\ 
-&q_{bbf} \rightarrow r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS \\ 
-%sb 
-&q_{sb1} \rightarrow tq_{sb2} \, | \, yS? \\ 
-&q_{sb2} \rightarrow tq_{sb3} \, | \, yS? \\ 
-&q_{sb3} \rightarrow tS? \, | \, yS? \\ 
+&q_{bb1} \rightarrow bq_{bb2} \, | \, r_2q_{c1} \, | \, S \\ 
+&q_{bb2} \rightarrow bq_{bb3} \, | \, r_2q_{c1} \, | \, S \\ 
+&q_{bb3} \rightarrow bq_{bb4} \, | \, r_2q_{c1} \, | \, S \\ 
+&q_{bb4} \rightarrow bq_{bbf} \, | \, (r_2yb)q_{mc1} \, | \, r_2q_{c1} \, | \, S \\ 
+&q_{bbf} \rightarrow r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S \\ 
+%spinning bludgeon. S needs to be checked. 
+&q_{sb1} \rightarrow q_{sb2} \, | \, yS \\ 
+&q_{sb2} \rightarrow q_{sb3} \, | \, yS \\ 
+&q_{sb3} \rightarrow S? \, | \, yS? \\ 
 %charge
-&q_{c1} \rightarrow tq_{c2} \, | \,  r_2q_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
-&q_{c2} \rightarrow tq_{c3} \, | \,  r_2q_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
+&q_{c1} \rightarrow q_{c2} \, | \,  r_2q_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
+&q_{c2} \rightarrow q_{c3} \, | \,  r_2q_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
 &q_{c3} \rightarrow r_2q_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, (yb)q_{sb1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\ \\ 
-&q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, r_2q_{c1} \, | \, tS \\ 
-&q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, tS \\ 
-&q_{cbb} \rightarrow r_2q_{c1} \, | \,  (yb)q_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, (ly)q_{ss} \, | \, tS \\ 
-&q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, r_2q_{c1} | \, (yb)q_{sb1} \, | \, tS\\ 
+&q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, r_2q_{c1} \, | \, S \\ 
+&q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S \\ 
+&q_{cbb} \rightarrow r_2q_{c1} \, | \,  (yb)q_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, (ly)q_{ss} \, | \, S \\ 
+&q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, r_2q_{c1} | \, (yb)q_{sb1} \, | \, S\\ 
 %mighty charge (release is omitted)
-&q_{mc1} \rightarrow tq_{mc2} \, | \, l_2q_{mcu} \, | \, yq_{mcu}\\
+&q_{mc1} \rightarrow q_{mc2} \, | \, l_2q_{mcu} \, | \, yq_{mcu}\\
 &q_{mc2} \rightarrow l_2q_{mcs} \, | \, yq_{mcs}\\
-&q_{mcu} \rightarrow yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1} \, | \, (yb)q_{sb1} \, | \,tS\\
-&q_{mcs} \rightarrow (yb)q_{sb1} \, | \, yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1}\, | \,tS\\
-%focus mode
-&q_{fm} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, r_2q_{c1} \, | \, r_1q_{fben} \, | \, r_1q_{fbew1} \, | \, (ly)q_{ss}\\
+&q_{mcu} \rightarrow yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1} \, | \, (yb)q_{sb1} \, | \, S\\
+&q_{mcs} \rightarrow (yb)q_{sb1} \, | \, yq_{os1} \, | \, (ly)q_{ss} \, | \, bq_{bb1}\, | \, S\\
 %focus strike/charge. when not hitting a wound, shows B | R_2
-&q_{fben} \rightarrow bq_{bb1} \, | \, r_2q_{c1} \, | \, tS\\
+&q_{fben} \rightarrow bq_{bb1} \, | \, r_2q_{c1} \, | \, S\\
 &q_{fbew1} \rightarrow r_2q_{c1} \, | \, tq_{fbew2} \\
-&q_{fbew2} \rightarrow r_2q_{c1} \, | \, yq_{os2} \, | \, tS\\
+&q_{fbew2} \rightarrow r_2q_{c1} \, | \, yq_{os2} \, | \, S\\
 \end{align*}
 
 \item Automaton
