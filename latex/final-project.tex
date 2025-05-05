@@ -91,7 +91,7 @@ S is the initial variable for the beginning of a combo
 &q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S\\
 &q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S\\
 &q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, r_2q_{c1} \, | \, (yb)q_{sb1} \, | \, S\\
-&q_{u} \rightarrow b{q_bb1} \, | \, r_2q_{c1} \, | \,(yb)q_{sb1} \, | \, (r_2yb)q_{mc1} \, | \, S\\
+&q_{u} \rightarrow bq_{bb1} \, | \, r_2q_{c1} \, | \,(yb)q_{sb1} \, | \, (r_2yb)q_{mc1} \, | \, S\\
 %big bang
 &q_{bb1} \rightarrow bq_{bb2} \, | \, r_2q_{c1} \, | \, S \\ 
 &q_{bb2} \rightarrow bq_{bb3} \, | \, r_2q_{c1} \, | \, S \\ 
@@ -101,7 +101,7 @@ S is the initial variable for the beginning of a combo
 %spinning bludgeon. S needs to be checked. 
 &q_{sb1} \rightarrow q_{sb2} \, | \, yS \\ 
 &q_{sb2} \rightarrow q_{sb3} \, | \, yS \\ 
-&q_{sb3} \rightarrow S? \, | \, yS? \\ 
+&q_{sb3} \rightarrow S \, | \, yS \\ 
 %charge
 &q_{c1} \rightarrow q_{c2} \, | \,  r_2q_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
 &q_{c2} \rightarrow q_{c3} \, | \,  r_2q_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, (l_2r_1)q_{fben} \, | \, (l_2r_1)q_{fbew1}\\ 
@@ -121,6 +121,7 @@ S is the initial variable for the beginning of a combo
 &q_{fbew2} \rightarrow r_2q_{c1} \, | \, yq_{os2} \, | \, S\\
 \end{align*}
 
+\newpage
 \item Automaton
 
 \begin{center}
@@ -128,20 +129,23 @@ S is the initial variable for the beginning of a combo
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}
-        \node[state, initial](q0){$q_0$};
-        \node[state, accepting, right of=q0](q1){$q_1$};
+        \node[state, initial above](S){$S$};
+        \node[state, accepting, below left of=S, yshift=-1cm, xshift=0.5cm](qbb1){$q_{bb1}$};
+        \node[state, accepting, left of=qbb1](qos1){$q_{os1}$};
+        \node[state, accepting, left of=qos1](qss){$q_{ss}$};
+        \node[state, accepting, below right of=S, yshift=-1cm, xshift=-0.5cm](qc1){$q_{c1}$};
+        \node[state, accepting, right of=qc1](qfben){$q_{fben}$};
+        \node[state, accepting, right of=qfben](qfbew1){$q_{fbew1}$};
         \draw 
-        (q0) edge[above] node{$\lambda,\lambda \rightarrow S$} (q1)
-        (q1) edge[right, loop right] node[align=center]
-        {$\lambda, S \rightarrow aAS$ \\ 
-        $\lambda, S \rightarrow a$ \\
-        $\lambda, A \rightarrow SbA$ \\
-        $\lambda, A \rightarrow SS$ \\
-        $\lambda, A \rightarrow ba$ \\
-        $a, a \rightarrow \lambda$ \\ 
-        $b, b \rightarrow \lambda$} (q1);
+        (S) edge[above] node{$y$} (qss)
+        (S) edge[above] node{$y$} (qos1)
+        (S) edge[left] node{$b$} (qbb1)
+        (S) edge[right] node{$r_2$} (qc1)
+        (S) edge[right] node{\scriptsize $(l_2r_1)$} (qfben)
+        (S) edge[right] node{\scriptsize $(l_2r_1)$} (qfbew1)
+        (S) edge[right, loop right] node{$placeholder$} (S);
     \end{tikzpicture}
-    \caption{Automaton for language}
+    \caption{Automaton for Language}
     \label{fig1:automaton-for-language}
 \end{figure}
 
