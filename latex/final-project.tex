@@ -67,6 +67,9 @@ Move Name for each State (Paired together for general buttons/functionality): \\
     $q_{sb1}$ & Spinning Bludgeon (Time 0)\\
     $q_{sb2}$ & Spinning Bludgeon (Time 1)\\
     $q_{sb3}$ & Spinning Bludgeon (Time 2)\\
+    $q_{sss}$ & Spinning Side Smash\\
+    $q_{sfu}$ & Spinning Follow Up\\
+    $q_{ssu}$ & Spinning Strong Upswing\\
     $q_{c1}$ & Charge (Time 0)\\
     $q_{c2}$ & Charge (Time 1)\\
     $q_{c3}$ & Charge (Time 2)\\
@@ -99,20 +102,23 @@ S is the initial variable for the beginning of a combo
 &q_{bb4} \rightarrow bq_{bbf} \, | \, dq_{mc1} \, | \, rq_{c1} \, | \, S \\ 
 &q_{bbf} \rightarrow rq_{c1} \, | \, cq_{sb1} \, | \, S \\ 
 %spinning bludgeon. S needs to be checked. 
-&q_{sb1} \rightarrow q_{sb2} \, | \, yS \\ 
-&q_{sb2} \rightarrow q_{sb3} \, | \, yS \\ 
-&q_{sb3} \rightarrow S \, | \, yS \\ 
+&q_{sb1} \rightarrow q_{sb2} \, | \, yq_{sss} \\ 
+&q_{sb2} \rightarrow q_{sb3} \, | \, yq_{sfu} \\ 
+&q_{sb3} \rightarrow S \, | \, yq_{ssu} \\ 
+&q_{sss} \rightarrow yq_{os2} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, S\\ 
+&q_{sfu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, S\\ 
+&q_{ssu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, dq_{mc1}\, | \, S\\ 
 %charge
 &q_{c1} \rightarrow q_{c2} \, | \,  rq_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
 &q_{c2} \rightarrow q_{c3} \, | \,  rq_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
-&q_{c3} \rightarrow rq_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, cq_{sb1} \, | \, fq_{fben} \, | \, fq_{fbew1}\ \\ 
+&q_{c3} \rightarrow rq_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, cq_{mc1} \, | \, fq_{fben} \, | \, fq_{fbew1}\ \\ 
 &q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, rq_{c1} \, | \, S \\ 
 &q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, S \\ 
 &q_{cbb} \rightarrow rq_{c1} \, | \,  cq_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, yq_{ss} \, | \, S \\ 
 &q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, rq_{c1} | \, cq_{sb1} \, | \, S\\ 
 %mighty charge (release is omitted)
-&q_{mc1} \rightarrow q_{mc2} \, | \, l_2q_{mcu} \, | \, yq_{mcu}\\
-&q_{mc2} \rightarrow l_2q_{mcs} \, | \, yq_{mcs}\\
+&q_{mc1} \rightarrow q_{mc2} \, | \, rq_{mcu} \, | \, yq_{mcu}\\
+&q_{mc2} \rightarrow rq_{mcs} \, | \, yq_{mcs}\\
 &q_{mcu} \rightarrow yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1} \, | \, cq_{sb1} \, | \, S\\
 &q_{mcs} \rightarrow cq_{sb1} \, | \, yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1}\, | \, S\\
 %focus strike/charge. when not hitting a wound, shows B | R_2
