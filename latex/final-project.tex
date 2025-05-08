@@ -96,22 +96,22 @@ S is the initial variable for the beginning of a combo
 &q_{bb4} \rightarrow bq_{bbf} \, | \, dq_{mc1} \, | \, rq_{c1} \, | \, \lambda \\ 
 &q_{bbf} \rightarrow rq_{c1} \, | \, cq_{sb1} \, | \, \lambda \\ 
 %spinning bludgeon. lambda needs to be checked. 
-&q_{sb1} \rightarrow q_{sb2} \, | \, yq_{sss} \\ 
-&q_{sb2} \rightarrow q_{sb3} \, | \, yq_{sfu} \\ 
+&q_{sb1} \rightarrow tq_{sb2} \, | \, yq_{sss} \\ 
+&q_{sb2} \rightarrow tq_{sb3} \, | \, yq_{sfu} \\ 
 &q_{sb3} \rightarrow \lambda \, | \, yq_{ssu} \\ 
 &q_{sss} \rightarrow yq_{os2} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, \lambda\\ 
 &q_{sfu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, \lambda\\ 
 &q_{ssu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, dq_{mc1}\, | \, \lambda\\ 
 %charge
-&q_{c1} \rightarrow q_{c2} \, | \,  rq_{csb} \, | \, yq_{csb} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
-&q_{c2} \rightarrow q_{c3} \, | \,  rq_{cu} \, | \, yq_{cu} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
+&q_{c1} \rightarrow tq_{c2} \, | \,  rq_{csb} \, | \, yq_{csb} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
+&q_{c2} \rightarrow tq_{c3} \, | \,  rq_{cu} \, | \, yq_{cu} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
 &q_{c3} \rightarrow rq_{cbb} \, | \,  yq_{cbb} \, | \, cq_{mc1} \, | \, fq_{fben} \, | \, fq_{fbew1}\ \\ 
 &q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, rq_{c1} \, | \, \lambda \\ 
 &q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, \lambda \\ 
 &q_{cbb} \rightarrow rq_{c1} \, | \,  cq_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, yq_{ss} \, | \, \lambda \\ 
 &q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, rq_{c1} | \, cq_{sb1} \, | \, \lambda\\ 
 %mighty charge (release is omitted)
-&q_{mc1} \rightarrow q_{mc2} \, | \, rq_{mcu} \, | \, yq_{mcu}\\
+&q_{mc1} \rightarrow tq_{mc2} \, | \, rq_{mcu} \, | \, yq_{mcu}\\
 &q_{mc2} \rightarrow rq_{mcs} \, | \, yq_{mcs}\\
 &q_{mcu} \rightarrow yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1} \, | \, cq_{sb1} \, | \, \lambda\\
 &q_{mcs} \rightarrow cq_{sb1} \, | \, yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1}\, | \, \lambda\\
@@ -194,10 +194,10 @@ S is the initial variable for the beginning of a combo
         (qbb4) edge[above, bend left=15] node[pos=0.2]{\scriptsize $r$} (qc1)
         (qbbf) edge[above, bend left=5] node[pos=0.2]{\scriptsize $r$} (qc1)
         (qbbf) edge[above, bend left] node[pos=0.1]{\scriptsize $c$} (qsb1)
-        (qc1) edge[left] node[pos=0.1]{\scriptsize $\lambda$} (qc2)
+        (qc1) edge[left] node[pos=0.1]{\scriptsize $t$} (qc2)
         (qc1) edge[left] node[pos=0.1]{\scriptsize $f$} (qfben)
         (qc1) edge[left] node[pos=0.1]{\scriptsize $f$} (qfbew1)
-        (qc2) edge[right] node[pos=0.1]{\scriptsize $\lambda$} (qc3)
+        (qc2) edge[right] node[pos=0.1]{\scriptsize $t$} (qc3)
         (qc2) edge[left] node[pos=0.1]{\scriptsize $f$} (qfben)
         (qc2) edge[left, bend right=20] node[pos=0.1]{\scriptsize $f$} (qfbew1)
         (qc1) edge[above] node[pos=0.2]{\scriptsize $r, y$} (qcsb)
@@ -218,7 +218,7 @@ S is the initial variable for the beginning of a combo
         (qcbb) edge[above, bend left=15] node[pos=0.1]{\scriptsize $b$} (qbb1)
         (qcbb) edge[above] node[pos=0.1]{\scriptsize $y$} (qss)
         (qc3) edge[above] node[pos=0.1]{\scriptsize $c$} (qmc1)
-        (qmc1) edge[right] node[pos=0.1]{\scriptsize $\lambda$} (qmc2)
+        (qmc1) edge[right] node[pos=0.1]{\scriptsize $t$} (qmc2)
         (qmc1) edge[left] node[pos=0.1]{\scriptsize $r, y$} (qmcu)
         (qmcu) edge[left] node[pos=0.1]{\scriptsize $y$} (qos1)
         (qmcu) edge[left] node[pos=0.1]{\scriptsize $y$} (qss)
@@ -233,8 +233,8 @@ S is the initial variable for the beginning of a combo
         (qcfu) edge[above, bend left=23] node[pos=0.1]{\scriptsize $y$} (qos1)
         (qcfu) edge[above, bend left=15] node[pos=0.1]{\scriptsize $b$} (qbb1)
         (qcfu) edge[above] node[pos=0.1]{\scriptsize $r$} (qc1)       
-        (qsb1) edge[above] node[pos=0.1]{\scriptsize $\lambda$} (qsb2)
-        (qsb2) edge[above] node[pos=0.1]{\scriptsize $\lambda$} (qsb3)
+        (qsb1) edge[above] node[pos=0.1]{\scriptsize $t$} (qsb2)
+        (qsb2) edge[above] node[pos=0.1]{\scriptsize $t$} (qsb3)
         (qsb1) edge[right] node[pos=0.1]{\scriptsize $y$} (qsss)
         (qsb2) edge[right] node[pos=0.1]{\scriptsize $y$} (qsfu)
         (qsb3) edge[right] node[pos=0.1]{\scriptsize $y$} (qssu)
