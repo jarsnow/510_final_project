@@ -1,7 +1,14 @@
 # 510 Final Project
 A project by John Rader and Andrew Huang
 
+### Running The Script
+
+```
+accept mh_NFA [input_str]
+```
+
 ### Background
+
 Our project focuses on the game *Monster Hunter Wilds*.
 The game tasks players with hunting large monsters with equally large weapons.
 Each weapon has its own long list of combo strings, similar to characters in arcade games such as *Mortal Kombat* and *Street Fighter*: the way your character reacts to a given input depends on the input given prior.
@@ -10,6 +17,7 @@ Because the similarities between the gameplay in *Monster Hunter Wilds* and Non-
 For the purposes of our project, we will focus on one weapon, the hammer.
 
 ### What does a valid string of inputs look like in the game?
+
 Before we discuss the anything related to our language and implementation, it is important to understand the mechanics of the game in order to understand the scope of our project.
 
 As mentioned before, the gameplay (in terms of inputs) is very similar to arcade fighting games.
@@ -24,5 +32,28 @@ For the purposes of our implementation, we will assume that the player is playin
 
 ### What do our symbols and alphabet look like?
 
+The symbols that make up our language represents a small portion of inputs one would press on an Xbox controller to input moves with the Hammer.
+For simplification, most inputs such as rolling, player movement with the left stick, camera movement with the right stick, toggling focus mode on / off, etc. are ignored.
+If they are necessary for a certain move, then we assume that the player is in a state for which that move is valid.
+
+For example, the move **Overhead Smash 1** is performed from the neutral state by pressing *B*.
+The move, **Side Smash** is performed from the neutral state by pressing *B* *while holding the left stick*.
+For the purposes of our representation of the game, these are both represented by a *B* input from the neutral state.
+In the game, these moves and the game itself are deterministic, however, for our automata, these moves are represented by the same input, and are non-deterministic.
+
+The remaining symbols that we will care about for input are:
+
+* B - representing the B button input
+* Y - representing the Y button input
+* F - representing the focus strike input*
+* R - representing the right trigger input
+* C - representing the double simultaneous Y and B button input
+* D - representing the triple simultaneous Y, B, and right trigger input
+
+\* The input for the focus strike requires you to be in focus mode, which the player is assumed to be in at the time of the input.
+
 ### What does a valid string look like in our language?
+
+A valid string in our language consists of any single string of inputs that have an effect on the player's moves.
+For example, pressing *Y* while in the state **Big Bang 1** has no effect on the player, as there is no move associated with *Y* and the given move.
 
