@@ -11,7 +11,7 @@
 \tikzset{
 ->, % makes the edges directed
 >=stealth, % makes the arrow heads bold
-node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+node distance=3.25cm, % specifies the minimum distance between two nodes. Change if necessary.
 every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
 initial text=$ $, % sets the text that appears on the start arrow
 }
@@ -91,53 +91,54 @@ S is the initial variable for the beginning of a combo
 \begin{align*}
 &S \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, fq_{fben} \, | \, fq_{fbew1} \, | \, yq_{ss} \, | \, \lambda \\
 %basic side smash/overhead 1 --> overhead 2 --> overhead 3
-&q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, S\\
-&q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, S\\
-&q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, S\\
-&q_{u} \rightarrow bq_{bb1} \, | \, rq_{c1} \, | \,cq_{sb1} \, | \, dq_{mc1} \, | \, S\\
+&q_{ss} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, \lambda\\
+&q_{os1} \rightarrow yq_{os2} \, | \, b{q_bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, \lambda\\
+&q_{os2} \rightarrow yq_{u} \, | \, b{q_bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, \lambda\\
+&q_{u} \rightarrow bq_{bb1} \, | \, rq_{c1} \, | \,cq_{sb1} \, | \, dq_{mc1} \, | \, \lambda\\
 %big bang
-&q_{bb1} \rightarrow bq_{bb2} \, | \, rq_{c1} \, | \, S \\ 
-&q_{bb2} \rightarrow bq_{bb3} \, | \, rq_{c1} \, | \, S \\ 
-&q_{bb3} \rightarrow bq_{bb4} \, | \, rq_{c1} \, | \, S \\ 
-&q_{bb4} \rightarrow bq_{bbf} \, | \, dq_{mc1} \, | \, rq_{c1} \, | \, S \\ 
-&q_{bbf} \rightarrow rq_{c1} \, | \, cq_{sb1} \, | \, S \\ 
-%spinning bludgeon. S needs to be checked. 
+&q_{bb1} \rightarrow bq_{bb2} \, | \, rq_{c1} \, | \, \lambda \\ 
+&q_{bb2} \rightarrow bq_{bb3} \, | \, rq_{c1} \, | \, \lambda \\ 
+&q_{bb3} \rightarrow bq_{bb4} \, | \, rq_{c1} \, | \, \lambda \\ 
+&q_{bb4} \rightarrow bq_{bbf} \, | \, dq_{mc1} \, | \, rq_{c1} \, | \, \lambda \\ 
+&q_{bbf} \rightarrow rq_{c1} \, | \, cq_{sb1} \, | \, \lambda \\ 
+%spinning bludgeon. lambda needs to be checked. 
 &q_{sb1} \rightarrow q_{sb2} \, | \, yq_{sss} \\ 
 &q_{sb2} \rightarrow q_{sb3} \, | \, yq_{sfu} \\ 
-&q_{sb3} \rightarrow S \, | \, yq_{ssu} \\ 
-&q_{sss} \rightarrow yq_{os2} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, S\\ 
-&q_{sfu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, S\\ 
-&q_{ssu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, dq_{mc1}\, | \, S\\ 
+&q_{sb3} \rightarrow \lambda \, | \, yq_{ssu} \\ 
+&q_{sss} \rightarrow yq_{os2} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, \lambda\\ 
+&q_{sfu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, \lambda\\ 
+&q_{ssu} \rightarrow yq_{os1} \, | \, bq_{bb1} \, | \, rq_{c1} \, | \, dq_{mc1}\, | \, \lambda\\ 
 %charge
-&q_{c1} \rightarrow q_{c2} \, | \,  rq_{csb} \, | \, yq_{csb} \, | \, bq_{cs1} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
-&q_{c2} \rightarrow q_{c3} \, | \,  rq_{csu} \, | \, yq_{csu} \, | \, bq_{cs2} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
-&q_{c3} \rightarrow rq_{cbb} \, | \,  yq_{cbb} \, | \, bq_{cs3} \, | \, cq_{mc1} \, | \, fq_{fben} \, | \, fq_{fbew1}\ \\ 
-&q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, rq_{c1} \, | \, S \\ 
-&q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, S \\ 
-&q_{cbb} \rightarrow rq_{c1} \, | \,  cq_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, yq_{ss} \, | \, S \\ 
-&q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, rq_{c1} | \, cq_{sb1} \, | \, S\\ 
+&q_{c1} \rightarrow q_{c2} \, | \,  rq_{csb} \, | \, yq_{csb} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
+&q_{c2} \rightarrow q_{c3} \, | \,  rq_{csu} \, | \, yq_{csu} \, | \, fq_{fben} \, | \, fq_{fbew1}\\ 
+&q_{c3} \rightarrow rq_{cbb} \, | \,  yq_{cbb} \, | \, cq_{mc1} \, | \, fq_{fben} \, | \, fq_{fbew1}\ \\ 
+&q_{csb} \rightarrow yq_{cfu} \, | \,  bq_{ss} \, | \, rq_{c1} \, | \, \lambda \\ 
+&q_{cu} \rightarrow yq_{cfu} \, | \,  bq_{bb1} \, | \, rq_{c1} \, | \, cq_{sb1} \, | \, \lambda \\ 
+&q_{cbb} \rightarrow rq_{c1} \, | \,  cq_{sb1} \, | \, yq_{os1} \, | \, bq_{bb1} \, | \, yq_{ss} \, | \, \lambda \\ 
+&q_{cfu} \rightarrow yq_{os1} \, | \,  bq_{bb1} \, | \, rq_{c1} | \, cq_{sb1} \, | \, \lambda\\ 
 %mighty charge (release is omitted)
 &q_{mc1} \rightarrow q_{mc2} \, | \, rq_{mcu} \, | \, yq_{mcu}\\
 &q_{mc2} \rightarrow rq_{mcs} \, | \, yq_{mcs}\\
-&q_{mcu} \rightarrow yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1} \, | \, cq_{sb1} \, | \, S\\
-&q_{mcs} \rightarrow cq_{sb1} \, | \, yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1}\, | \, S\\
+&q_{mcu} \rightarrow yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1} \, | \, cq_{sb1} \, | \, \lambda\\
+&q_{mcs} \rightarrow cq_{sb1} \, | \, yq_{os1} \, | \, yq_{ss} \, | \, bq_{bb1}\, | \, \lambda\\
 %focus strike/charge. when not hitting a wound, shows B | R_2
-&q_{fben} \rightarrow bq_{bb1} \, | \, rq_{c1} \, | \, S\\
+&q_{fben} \rightarrow bq_{bb1} \, | \, rq_{c1} \, | \, \lambda\\
 &q_{fbew1} \rightarrow rq_{c1} \, | \, q_{fbew2} \\
-&q_{fbew2} \rightarrow rq_{c1} \, | \, yq_{os2} \, | \, S\\
+&q_{fbew2} \rightarrow rq_{c1} \, | \, yq_{os2} \, | \, \lambda\\
 \end{align*}
 
 \newpage
-\newgeometry{left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
+\newgeometry{left=0in, right=0in, top=0.25in, bottom=0.25in}
 \item Automaton
 
 \begin{center}
 
 \begin{figure}[ht]
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[x=12cm]
         \node[state, initial above](S){$S$};
-        \node[state, accepting, below left of=S, yshift=-1cm, xshift=0.5cm](qos1){$q_{os1}$};
+        \node[state, accepting, below of=S](qss){$q_{ss}$};
+        \node[state, accepting, left of=qss](qos1){$q_{os1}$};
         \node[state, accepting, below of=qos1](qos2){$q_{os2}$};
         \node[state, accepting, below of=qos2](qu){$q_{u}$};
         \node[state, accepting, left of=qos1](qbb1){$q_{bb1}$};
@@ -145,20 +146,19 @@ S is the initial variable for the beginning of a combo
         \node[state, accepting, below of=qbb2](qbb3){$q_{bb3}$};
         \node[state, accepting, below of=qbb3](qbb4){$q_{bb4}$};
         \node[state, accepting, below of=qbb4](qbbf){$q_{bbf}$};
-        \node[state, accepting, below right of=S, yshift=-1cm, xshift=-0.5cm](qss){$q_{ss}$};
-        \node[state, accepting, below of=qss](qc1){$q_{c1}$};
-        \node[state, accepting, below of=qc1](qc2){$q_{c2}$};
-        \node[state, accepting, below of=qc2](qc3){$q_{c3}$};
+        \node[state, below of=qss](qc1){$q_{c1}$};
+        \node[state, below of=qc1](qc2){$q_{c2}$};
+        \node[state, below of=qc2](qc3){$q_{c3}$};
         \node[state, accepting, right of=qc1](qcsb){$q_{csb}$};
         \node[state, accepting, right of=qc2](qcu){$q_{cu}$};
         \node[state, accepting, right of=qc3](qcbb){$q_{cbb}$};
         \node[state, accepting, right of=qcu](qcfu){$q_{cfu}$};
-        \node[state, accepting, below of=qu](qmc1){$q_{mc1}$};
-        \node[state, accepting, below of=qmc1](qmc2){$q_{mc2}$};
+        \node[state, below of=qu](qmc1){$q_{mc1}$};
+        \node[state, below of=qmc1](qmc2){$q_{mc2}$};
         \node[state, accepting, below of=qmc2](qmcs){$q_{mcs}$};
         \node[state, accepting, left of=qmcs](qmcu){$q_{mcu}$};
-        \node[state, accepting, below of=qc3](qsb1){$q_{sb1}$};
-        \node[state, accepting, right of=qsb1](qsb2){$q_{sb2}$};
+        \node[state, below of=qc3](qsb1){$q_{sb1}$};
+        \node[state, right of=qsb1](qsb2){$q_{sb2}$};
         \node[state, accepting, right of=qsb2](qsb3){$q_{sb3}$};
         \node[state, accepting, below of=qsb1](qsss){$q_{sss}$};
         \node[state, accepting, below of=qsb2](qsfu){$q_{sfu}$};
@@ -167,39 +167,98 @@ S is the initial variable for the beginning of a combo
         \node[state, accepting, right of=qfben](qfbew1){$q_{fbew1}$};
         \node[state, accepting, below of=qfbew1](qfbew2){$q_{fbew2}$};
         \draw 
-        (S) edge[above] node{\scriptsize $y$} (qss)
-        (S) edge[above] node{\scriptsize $y$} (qos1)
-        (S) edge[left] node{\scriptsize $b$} (qbb1)
-        (S) edge[left] node{\scriptsize $r$} (qc1)
-        (S) edge[right] node{\scriptsize $f$} (qfben)
-        (S) edge[above] node{\scriptsize $f$} (qfbew1)
-        (qfbew1) edge[right] node{\scriptsize $\lambda$} (qfbew2)
-        (qos1) edge[right] node{\scriptsize $y$} (qos2)
-        (qos2) edge[right] node{\scriptsize $y$} (qu)
-        (qu) edge[right] node{\scriptsize $d$} (qmc1)
-        (qbb1) edge[right] node{\scriptsize $b$} (qbb2)
-        (qbb2) edge[right] node{\scriptsize $b$} (qbb3)
-        (qbb3) edge[right] node{\scriptsize $b$} (qbb4)
-        (qbb4) edge[right] node{\scriptsize $b$} (qbbf)
-        (qc1) edge[right] node{\scriptsize $\lambda$} (qc2)
-        (qc2) edge[right] node{\scriptsize $\lambda$} (qc3)
-        (qc1) edge[above] node{\scriptsize $r$} (qcsb)
-        (qc2) edge[above] node{\scriptsize $r$} (qcu)
-        (qc3) edge[above] node{\scriptsize $r$} (qcbb)
-        (qcsb) edge[above] node{\scriptsize $y$} (qcfu)
-        (qcu) edge[above] node{\scriptsize $y$} (qcfu)
-        (qcbb) edge[above] node{\scriptsize $y$} (qcfu)
-        (qc3) edge[above] node{\scriptsize $c$} (qmc1)
-        (qmc1) edge[right] node{\scriptsize $\lambda$} (qmc2)
-        (qmc1) edge[right] node{\scriptsize $r, y$} (qmcu)
-        (qmc2) edge[right] node{\scriptsize $r, y$} (qmcs)
-        (qcfu) edge[above, bend left] node{\scriptsize $c$} (qsb1)
-        (qsb1) edge[above] node{\scriptsize $\lambda$} (qsb2)
-        (qsb2) edge[above] node{\scriptsize $\lambda$} (qsb3)
-        (qsb1) edge[right] node{\scriptsize $y$} (qsss)
-        (qsb2) edge[right] node{\scriptsize $y$} (qsfu)
-        (qsb3) edge[right] node{\scriptsize $y$} (qssu)
-        (S) edge[right, loop right] node{$placeholder$} (S);
+        (S) edge[right] node[pos=0.1]{\scriptsize $y$} (qss)
+        (S) edge[left] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (S) edge[left] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (S) edge[left, bend right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (S) edge[above] node[pos=0.3]{\scriptsize $f$} (qfben)
+        (S) edge[above] node[pos=0.25]{\scriptsize $f$} (qfbew1)
+        (qfbew1) edge[right] node[pos=0.1]{\scriptsize $\lambda$} (qfbew2)
+        (qss) edge[above, bend right] node[pos=0.05]{\scriptsize $b$} (qbb1)
+        (qss) edge[right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qss) edge[left, bend right] node[pos=0.1]{\scriptsize $c$} (qsb1)
+        (qos1) edge[left] node[pos=0.1]{\scriptsize $y$} (qos2)
+        (qos1) edge[above] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qos1) edge[right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qos1) edge[left] node[pos=0.05]{\scriptsize $c$} (qsb1)
+        (qos2) edge[left] node[pos=0.1]{\scriptsize $y$} (qu)
+        (qos2) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qos2) edge[below] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qos2) edge[right] node[pos=0.05]{\scriptsize $c$} (qsb1)
+        (qu) edge[right] node[pos=0.1]{\scriptsize $d$} (qmc1)
+        (qu) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qu) edge[right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qu) edge[right] node[pos=0.3]{\scriptsize $c$} (qsb1)
+        (qbb1) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb2)
+        (qbb1) edge[above, bend right=5] node[pos=0.3]{\scriptsize $r$} (qc1)
+        (qbb2) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb3)
+        (qbb2) edge[above, bend left=20] node[pos=0.05]{\scriptsize $r$} (qc1)
+        (qbb3) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb4)
+        (qbb3) edge[above, bend left=5] node[pos=0.2]{\scriptsize $r$} (qc1)
+        (qbb4) edge[right] node[pos=0.1]{\scriptsize $b$} (qbbf)
+        (qbb4) edge[above] node[pos=0.1]{\scriptsize $d$} (qmc1)
+        (qbb4) edge[above, bend left=15] node[pos=0.2]{\scriptsize $r$} (qc1)
+        (qbbf) edge[above, bend left=5] node[pos=0.2]{\scriptsize $r$} (qc1)
+        (qbbf) edge[above, bend left] node[pos=0.1]{\scriptsize $c$} (qsb1)
+        (qc1) edge[left] node[pos=0.1]{\scriptsize $\lambda$} (qc2)
+        (qc1) edge[left] node[pos=0.1]{\scriptsize $f$} (qfben)
+        (qc1) edge[left] node[pos=0.1]{\scriptsize $f$} (qfbew1)
+        (qc2) edge[right] node[pos=0.1]{\scriptsize $\lambda$} (qc3)
+        (qc2) edge[left] node[pos=0.1]{\scriptsize $f$} (qfben)
+        (qc2) edge[left, bend right=20] node[pos=0.1]{\scriptsize $f$} (qfbew1)
+        (qc1) edge[above] node[pos=0.2]{\scriptsize $r, y$} (qcsb)
+        (qc2) edge[above] node[pos=0.5]{\scriptsize $r, y$} (qcu)
+        (qc3) edge[above] node[pos=0.1]{\scriptsize $r, y$} (qcbb)
+        (qc3) edge[left] node[pos=0.2]{\scriptsize $f$} (qfben)
+        (qc3) edge[left] node[pos=0.1]{\scriptsize $f$} (qfbew1)
+        (qcsb) edge[above] node[pos=0.1]{\scriptsize $y$} (qcfu)
+        (qcsb) edge[above] node[pos=0.1]{\scriptsize $b$} (qss)
+        (qcsb) edge[above] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qcu) edge[above] node[pos=0.1]{\scriptsize $y$} (qcfu)
+        (qcu) edge[above] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qcu) edge[above] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qcu) edge[right] node[pos=0.05]{\scriptsize $c$} (qsb1)
+        (qcbb) edge[above] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qcbb) edge[above] node[pos=0.1]{\scriptsize $c$} (qsb1)
+        (qcbb) edge[above] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (qcbb) edge[above, bend left=15] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qcbb) edge[above] node[pos=0.1]{\scriptsize $y$} (qss)
+        (qc3) edge[above] node[pos=0.1]{\scriptsize $c$} (qmc1)
+        (qmc1) edge[right] node[pos=0.1]{\scriptsize $\lambda$} (qmc2)
+        (qmc1) edge[left] node[pos=0.1]{\scriptsize $r, y$} (qmcu)
+        (qmcu) edge[left] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (qmcu) edge[left] node[pos=0.1]{\scriptsize $y$} (qss)
+        (qmcu) edge[left, bend left=15] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qmcu) edge[left] node[pos=0.1]{\scriptsize $c$} (qsb1)
+        (qmc2) edge[right] node[pos=0.1]{\scriptsize $r, y$} (qmcs)
+        (qmcs) edge[right] node[pos=0.1]{\scriptsize $c$} (qsb1)
+        (qmcs) edge[right, bend left] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (qmcs) edge[right] node[pos=0.1]{\scriptsize $y$} (qss)
+        (qmcs) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qcfu) edge[right, bend left] node[pos=0.1]{\scriptsize $c$} (qsb1)
+        (qcfu) edge[above, bend left=23] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (qcfu) edge[above, bend left=15] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qcfu) edge[above] node[pos=0.1]{\scriptsize $r$} (qc1)       
+        (qsb1) edge[above] node[pos=0.1]{\scriptsize $\lambda$} (qsb2)
+        (qsb2) edge[above] node[pos=0.1]{\scriptsize $\lambda$} (qsb3)
+        (qsb1) edge[right] node[pos=0.1]{\scriptsize $y$} (qsss)
+        (qsb2) edge[right] node[pos=0.1]{\scriptsize $y$} (qsfu)
+        (qsb3) edge[right] node[pos=0.1]{\scriptsize $y$} (qssu)
+        (qsss) edge[right] node[pos=0.1]{\scriptsize $y$} (qos2)
+        (qsss) edge[left] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qsss) edge[right, bend right=15] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qsfu) edge[right] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (qsfu) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qsfu) edge[right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qssu) edge[right, bend right=1] node[pos=0.1]{\scriptsize $y$} (qos1)
+        (qssu) edge[right] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qssu) edge[right, bend right=10] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qssu) edge[right] node[pos=0.1]{\scriptsize $d$} (qmc1)
+        (qfben) edge[above, bend right] node[pos=0.1]{\scriptsize $b$} (qbb1)
+        (qfben) edge[right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qfbew1) edge[right] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qfbew2) edge[below, bend right=27] node[pos=0.1]{\scriptsize $r$} (qc1)
+        (qfbew2) edge[above, bend right] node[pos=0.05]{\scriptsize $y$} (qos2);
     \end{tikzpicture}
     \caption{Automaton for Language}
     \label{fig1:automaton-for-language}
