@@ -84,5 +84,5 @@ mh_transition :: State -> Symbol -> [State]
 mh_transition S Y = [Qos1, Qss]
 mh_transition S F = [Qfben, Qfbew1]
 mh_transition S R = [Qc1]
-...
+-- many more states below...
 ```
