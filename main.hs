@@ -1,6 +1,5 @@
 -- import for foldM func
 import Control.Monad
-import System.IO
 
 -- define states
 data State = S | Qss | Qos1 | Qos2 | Qu | Qbb1 | Qbb2 | Qbb3 | Qbb4 | Qbbf 
@@ -9,19 +8,19 @@ data State = S | Qss | Qos1 | Qos2 | Qu | Qbb1 | Qbb2 | Qbb3 | Qbb4 | Qbbf
            deriving (Eq, Show) -- use this to automatically make functions for == and /=, as well as turning the state into a string
 
 -- define the symbols in the language
--- TODO: add the rest of the symbols
 data Symbol = B | Y | F | R | C | D | W deriving (Eq, Show)
 
--- define accepting states
+-- define start state
+mh_start_state :: State
+mh_start_state = S
+
+-- define accepting states function to check if a state is in the list of accepting states
 mh_accept_func :: State -> Bool
--- `elem` determines if something is in a list
--- could probably be improved, maybe to just only true?
-mh_accept_func = (`elem` [S, Qss, Qos1, Qos2, Qu, Qbb1, Qbb2, Qbb3, Qbb4, Qbbf, Qsb1, Qsb2, Qsb3, Qsss, Qsfu, Qssu, Qc1, Qc2, Qc3, Qcsb, Qcu, Qcbb, Qcfu, Qmc1, Qmc2, Qmcu, Qmcs, Qfben, Qfbew1, Qfbew2])
+mh_accept_func = (`elem` [S, Qss, Qos1, Qos2, Qu, Qbb1, Qbb2, Qbb3, Qbb4, Qbbf, Qsb3, Qsss, Qsfu, Qssu, Qc1, Qc3, Qcsb, Qcu, Qcbb, Qcfu, Qmcu, Qmcs, Qfben, Qfbew1, Qfbew2])
 
 -- transition function
 -- take in the current state, the input symbol, and return the out states
 mh_transition :: State -> Symbol -> [State]
--- TODO: add the rest of these
 mh_transition S Y = [Qos1, Qss]
 mh_transition S F = [Qfben, Qfbew1]
 mh_transition S R = [Qc1]
@@ -118,25 +117,81 @@ data NFA q s = NFA {
 -- create a specific one for our use for monster hunter wilds
 mh_NFA :: NFA State Symbol
 mh_NFA = NFA {
-    start_state = S,
+    start_state = mh_start_state,
     accept_func = mh_accept_func,
     transition_func = mh_transition
 }
 
--- function to check if the NFA accepts a string
--- adapted from https://github.com/leonidas/codeblog/blob/master/2011/2011-12-18-haskell-nfa.md 
-check_accept :: NFA q s -> [s] -> Bool
-check_accept nfa input = any (accept_func nfa) (foldM (transition_func nfa) (start_state nfa) input)
-
--- function for the user to check an input string
---accept :: NFA q s -> IO ()
-accept input_NFA str = do
-    let symbol_list = [char_to_symbol x | x <- str]
-    if (check_accept input_NFA symbol_list)
+findFirstPath :: NFA State Symbol -> [Symbol] -> IO ()
+findFirstPath nfa symbols = do
+    -- start at S (start state)
+    let initialState = start_state nfa
+    let initialPath = []
+    
+    -- get all possible paths through the NFA
+    let allPaths = explorePaths nfa initialPath initialState symbols
+    
+    -- get all paths that are accepting
+    -- filter and take only the paths that are accepting
+    let acceptingPaths = filter (isAccepting nfa) allPaths
+    
+    -- print result
+    if null acceptingPaths
         then do
-            putStrLn "accept"
-        else do
+            -- no accepting paths, print
             putStrLn "reject"
+        else do
+            -- since acceptingPaths returns a tuple of path and ending state,
+            -- take the first tuple, then take only the transition list
+            let (transitions, _) = head acceptingPaths
+            -- print output
+            putStrLn "accept"
+            printTransitions transitions
+
+-- helper function to explore all paths
+-- input:
+--      NFA
+--      current path (represented by the list of tuples of (state, read symbol, next state))
+--      the current state
+--      the list of symbols left to be read
+-- returns:
+--      the paths (which are a list of tuples, where each tuple is the ending path and its ending state
+explorePaths :: NFA State Symbol -> [(State, Symbol, State)] -> State -> [Symbol] -> [([(State, Symbol, State)], State)]
+-- base case:
+-- if out of symbols to read, then the path is the remaining path, and ending state is the current state
+explorePaths nfa path current [] = [(path, current)]
+-- take the next symbol out of the list
+-- concat takes a list of lists and turns it into a list
+-- get all states reachable from current state (current) with transition symbol (sym)
+-- for each possible reachable state, traverse it, then add the new info to the current path
+explorePaths nfa path current (sym:syms) = concat [explorePaths nfa (path ++ [(current, sym, next)]) next syms | next <- transition_func nfa current sym]
+
+-- check if a path ends in accepting state
+-- input:
+--      NFA
+--      current path (represented by tuple of a list of (state, read symbol, next state) and ending state)
+-- output:
+--      is the state in an accepting state or not
+isAccepting :: NFA State Symbol -> ([(State, Symbol, State)], State) -> Bool
+-- check if final state is accepted by the NFA
+isAccepting nfa (_, finalState) = accept_func nfa finalState
+
+-- print transitions in the correct format
+-- ex:
+-- S B Qbb1
+-- Qbb1 R Qc1
+printTransitions :: [(State, Symbol, State)] -> IO ()
+-- print out each transition in the list (use mapM_ to carry out actions)
+printTransitions list = mapM_ printTransition list
+
+-- helper function to print a single transition
+printTransition :: (State, Symbol, State) -> IO ()
+printTransition (start, sym, end) = putStrLn (show start ++ " " ++ show sym ++ " " ++ show end)
+
+-- accept function as described in assignment
+accept :: NFA State Symbol -> String -> IO ()
+    -- get map each character from the input to their symbols, and find (then print) the first path
+accept nfa str = findFirstPath nfa (map char_to_symbol str)
 
 -- character to symbol
 char_to_symbol :: Char -> Symbol
@@ -146,5 +201,5 @@ char_to_symbol 'F' = F
 char_to_symbol 'R' = R
 char_to_symbol 'C' = C
 char_to_symbol 'D' = D
-char_to_symbol 'W' = W
+char_to_symbol 'T' = W -- map the T, time wait character, to W because I messed up the naming and don't want to change it
 char_to_symbol _ = error "Invalid character input."

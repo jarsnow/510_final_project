@@ -49,6 +49,7 @@ The remaining symbols that we will care about for input are:
 * R - representing the right trigger input
 * C - representing the double simultaneous Y and B button input
 * D - representing the triple simultaneous Y, B, and right trigger input
+* T - representing holding a button for a small period of time
 
 \* The input for the focus strike requires you to be in focus mode, which the player is assumed to be in at the time of the input.
 
@@ -57,3 +58,31 @@ The remaining symbols that we will care about for input are:
 A valid string in our language consists of any single string of inputs that have an effect on the player's moves.
 For example, pressing *Y* while in the state **Big Bang 1** has no effect on the player, as there is no move associated with *Y* and the given move.
 
+### Our Data Structure
+
+```
+-- define states
+data State = S | Qss | Qos1 | Qos2 | Qu | Qbb1 | Qbb2 | Qbb3 | Qbb4 | Qbbf 
+           | Qsb1 | Qsb2 | Qsb3 | Qsss | Qsfu | Qssu | Qc1 | Qc2 | Qc3 | Qcsb | Qcu | Qcbb 
+           | Qcfu | Qmc1 | Qmc2 | Qmcu | Qmcs | Qfben | Qfbew1 | Qfbew2
+           deriving (Eq, Show) -- use this to automatically make functions for == and /=, as well as turning the state into a string
+
+-- define the symbols in the language
+data Symbol = B | Y | F | R | C | D | W deriving (Eq, Show)
+
+-- define start state
+mh_start_state :: State
+mh_start_state = S
+
+-- define accepting states function to check if a state is in the list of accepting states
+mh_accept_func :: State -> Bool
+mh_accept_func = (`elem` [S, Qss, Qos1, Qos2, Qu, Qbb1, Qbb2, Qbb3, Qbb4, Qbbf, Qsb3, Qsss, Qsfu, Qssu, Qc1, Qc3, Qcsb, Qcu, Qcbb, Qcfu, Qmcu, Qmcs, Qfben, Qfbew1, Qfbew2])
+
+-- transition function
+-- take in the current state, the input symbol, and return the out states
+mh_transition :: State -> Symbol -> [State]
+mh_transition S Y = [Qos1, Qss]
+mh_transition S F = [Qfben, Qfbew1]
+mh_transition S R = [Qc1]
+...
+```
