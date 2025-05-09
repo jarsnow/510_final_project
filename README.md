@@ -5,7 +5,7 @@ A project by John Rader and Andrew Huang
 
 ```
 ghci main.hs
-> accept mh_NFA [input_str]
+> accept mh_NFA [input_string]
 ```
 
 ### Background
