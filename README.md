@@ -87,3 +87,7 @@ mh_transition S F = [Qfben, Qfbew1]
 mh_transition S R = [Qc1]
 -- many more states below...
 ```
+
+### Our Grammar and Automaton
+
+[final-project.pdf](https://github.com/user-attachments/files/20129698/final-project.pdf)
