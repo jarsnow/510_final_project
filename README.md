@@ -4,7 +4,8 @@ A project by John Rader and Andrew Huang
 ### Running The Script
 
 ```
-accept mh_NFA [input_str]
+ghci main.hs
+> accept mh_NFA [input_str]
 ```
 
 ### Background
